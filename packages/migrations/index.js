@@ -1,30 +1,33 @@
 // Requiring the module
-const reader = require('xlsx');
-const axios = require('axios').default;
+const reader = require('xlsx')
+const axios = require('axios').default
 
 // Reading our test file
-const file = reader.readFile('./files/products.xlsx');
+const file = reader.readFile('./files/products.xlsx')
 
-const data = [];
+const data = []
 
-const sheets = file.SheetNames;
+const domain = 'https://mint-home-cms.fly.dev'
+
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTI2NzI1NzksImlkIjoicXhvbnF2ZnA5ZmE2NWpyIiwidHlwZSI6ImFkbWluIn0.wSk5FdPo8coSmF0GUX-Vh7akoOwTqnCMaP16ak-TVyQ'
+
+const sheets = file.SheetNames
 
 for (let i = 0; i < sheets.length; i++) {
-  const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]]);
+  const temp = reader.utils.sheet_to_json(file.Sheets[file.SheetNames[i]])
   for (res of temp) {
-    data.push(res);
-    await axios.post('https://mint-home-cms.fly.dev/api/collections/products/records', res, {
+    data.push(res)
+    axios.post(`${domain}/api/collections/products/records`, res, {
       headers: {
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU4MjA1OTQsImlkIjoicXhvbnF2ZnA5ZmE2NWpyIiwidHlwZSI6ImFkbWluIn0.pKO8PC7E3ZoThCxzr1eewwC-M7IZiIy8ZT-e99n7eqE',
+        Authorization: token,
       },
-    });
+    })
   }
-
 }
 
 // Printing data
-console.log(data);
+console.log(data)
 
 // axios
 //   .post('https://mint-home-cms.fly.dev/api/admins/auth-with-password', {
@@ -32,5 +35,5 @@ console.log(data);
 //     password: 'Truesoul1995$',
 //   })
 //   .then((res) => {
-//     console.log(res.data);
-//   });
+//     console.log(res.data)
+//   })

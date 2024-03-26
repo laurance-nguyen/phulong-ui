@@ -1,31 +1,33 @@
 {
   "name": "admin",
-  "version": "1.0.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "biome check ./app ./components ./utils"
+    "dev": "vite --clearScreen false",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.22.8",
     "@tanstack/react-table": "^8.11.3",
+    "@tanstack/router-devtools": "^1.22.8",
     "clsx": "^2.0.0",
-    "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*"
+    "ui": "workspace:*",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.19",
-    "@types/node": "^17.0.12",
+    "@tanstack/router-vite-plugin": "^1.22.8",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "autoprefixer": "^10.4.15",
-    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "tsconfig": "workspace:*",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^5.2.6"
   }
 }

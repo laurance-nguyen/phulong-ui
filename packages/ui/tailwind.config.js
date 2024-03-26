@@ -2,6 +2,7 @@ const config = {
   content: [
     '../../apps/**/app/**/*.{jsx,tsx,mdx}',
     '../../apps/**/components/**/*.{jsx,tsx,mdx}',
+    '../../apps/**/src/**/*.{jsx,tsx,mdx}',
     '../../packages/ui/**/*.{jsx,tsx,mdx}',
   ],
   theme: {
